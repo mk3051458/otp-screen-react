@@ -1,37 +1,31 @@
-import React, { Component } from "react";
+import React from "react";
 
-export default class OtpBox extends Component {
-	constructor(props) {
-		super(props);
-		this.inputref = React.createRef();
-	}
-
-	componentDidUpdate() {
-		this.inputref.current.focus();
-    }
-    checkBackSpace = e =>{
-        console.log(e.keyCode)
-    }
-	render() {
-        const { autoFocus, checkBackSpace, validate, value } = this.props
+export default function OtpBox(props) {
+	
+	// componentDidUpdate() {
+	// 	console.log(this.inputref.current)
+	// 	this.inputref.current.focus();
+    // }
+    const { autoFocus, checkBackSpace, validate, value} = props
 		return (
-			<div style={styles.divStyle}>
+			
 				<input
-					ref={this.inputref}
+					// ref={this.inputref}
 					type="text"
+					// ref={e => assignRef(e, id)}
 					style={styles.input}
 					min="0"
 					maxLength="1"
-                    disabled={!autoFocus}
+                    // disabled={!autoFocus}
                     onKeyDown={checkBackSpace}
 					autoFocus={autoFocus}
 					onChange={e => validate(e.target.value)}
 					value={value}
 				/>
-			</div>
+			
 		);
 	}
-}
+
 const styles = {
 	input: {
 		padding: 10,
